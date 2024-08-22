@@ -20,8 +20,11 @@ async function getData() {
         const rows = $('table.basic tbody tr');
 
         for (let i = 0; i < 10 ; i++) {
+            //Selecting each row using the index "i";
             const specifcRow = rows.eq(i)
             individualRanking.push({
+                //After get the row using the index, using the jquery method ".find", take the specifcs table datas tha corresponds to Position, Name, Team and points
+                //This only was possible after analyse the structure of the table in the browser, inspecting the elements
                 Position: specifcRow.find('td').eq(0).text().trim(),
                 Name: specifcRow.find('td').eq(3).text().trim(),
                 Team: specifcRow.find('td').eq(4).text().trim(),
