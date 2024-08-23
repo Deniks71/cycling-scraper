@@ -76,4 +76,8 @@ async function getRaceResults() {
 
 };
 
+getIndividualRanking()
+getRaceResults()
+
 export default app;
+
