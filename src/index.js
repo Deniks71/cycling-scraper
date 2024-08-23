@@ -1,5 +1,10 @@
 import axios from "axios";
 import * as cheerio from "cheerio";
+import express from "express";
+
+//configurando express no projeto
+const app = express();
+app.use(express.json());
 
 //URL for the page where contains the individual world ranking.
 
@@ -70,3 +75,4 @@ async function getRaceResults() {
 
 };
 
+export default app;
