@@ -46,13 +46,27 @@ async function getRaceResults() {
     try {
         const responseRaceResults = await axios.get(url);
         const html = responseRaceResults.data;
-        console.log(html)
+        
+        const $ = cheerio.load(html);
+        const rows = $('table.basic tbody tr');
+        
+        for (let i = 0; i < rows.length; i++) {
+            const specifcRow = rows.eq(i);
+
+            raceResults.push({
+                Date: specifcRow.find('td').eq(0).text().trim(),
+                Race: specifcRow.find('td').eq(2).text().trim(),
+                Winner: specifcRow.find('td').eq(3).text().trim(),
+                Class: specifcRow.find('td').eq(4).text().trim()
+            });
+        };
+
+        console.log(raceResults);
+    
 
     } catch(error){
         console.error('Error retrieving the data:', error);
-    }
+    };
 
 };
 
-
-getRaceResults()
