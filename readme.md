@@ -11,7 +11,7 @@ Assim como também instalar as dependeências que estarão no repositório a seg
 
 ## Clone do repositório
 https://github.com/Deniks71/cycling-scraper.git
-Para instalar, abra o a pasta clonada na sua IDE favorita, e rode o comando NPM install, que ele irá instalar todas as dependências necessárias.
+Para instalar, abra a pasta clonada na sua IDE favorita, e rode o comando NPM install, que ele irá instalar todas as dependências necessárias.
 
 ## Explicação dos arquivos
 Até então toda a funcionalidade do codigo está dentro da pasta "src" dentro do arquivo "index.js". 
