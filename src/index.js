@@ -6,31 +6,31 @@ import express from "express";
 const app = express();
 app.use(express.json());
 
-//URL for the page where contains the individual world ranking.
 
 async function getIndividualRanking() {
+    //Url de onde serão retirados os dados.
     const url = 'https://www.procyclingstats.com/rankings/me/individual';
     let individualRanking = [];
 
     try {
-        //Gets the response of the page using the method axios.get() to retrieve all the data in that page
+        //Pega o response contendo os dados contidos na url buscada(o axios é o responsavel por fazer a requisição).
         const responseRanking = await axios.get(url);
         
-        //Declaring a new const to put only the html that was received un the response.
+        //Declarando uma constante onde serão armazenados somente o html retirados do response obtido.
         const html = responseRanking.data;
 
-        //loading the html with cheerio
+        //Carregando HTML com o Cheerio
         const $ = cheerio.load(html);
 
-        //Selecting the rows using the html element and the css class
+        //Selecionando as linhas da tabela
         const rows = $('table.basic tbody tr');
 
+        //Nesse caso foi colocado o valor de 10, pois só quero os 10 primeiros do ranking(porém isso pode ser alterado a qualquer momento)
         for (let i = 0; i < 10 ; i++) {
-            //Selecting each row using the index "i";
+            //Realiza looping para armazenar os dados de cada linha
             const specifcRow = rows.eq(i)
             individualRanking.push({
-                //After get the row using the index, using the jquery method ".find", take the specifcs table datas tha corresponds to Position, Name, Team and points
-                //This only was possible after analyse the structure of the table in the browser, inspecting the elements
+                //Através de um metodo erdado do JQUERY ".find", está sendo achado cada celula desejada na linha e armazenados em um objeto e inseridos em um array.
                 Position: specifcRow.find('td').eq(0).text().trim(),
                 Name: specifcRow.find('td').eq(3).text().trim(),
                 Team: specifcRow.find('td').eq(4).text().trim(),
@@ -44,6 +44,7 @@ async function getIndividualRanking() {
     };
 };
 
+// O codigo a seguir é bastante similar ao anterior
 async function getRaceResults() {
     const url = 'https://www.procyclingstats.com/races.php';
     let raceResults = [];
