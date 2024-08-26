@@ -1,13 +1,15 @@
 import axios from "axios";
 import * as cheerio from "cheerio";
 import express from "express";
+import routes from "./routes.js"
 
 //configurando express no projeto
 const app = express();
 app.use(express.json());
+app.use(routes)
 
 
-async function getIndividualRanking() {
+export async function getIndividualRanking(limite = 10) {
     //Url de onde serão retirados os dados.
     const url = 'https://www.procyclingstats.com/rankings/me/individual';
     let individualRanking = [];
@@ -26,7 +28,7 @@ async function getIndividualRanking() {
         const rows = $('table.basic tbody tr');
 
         //Nesse caso foi colocado o valor de 10, pois só quero os 10 primeiros do ranking(porém isso pode ser alterado a qualquer momento)
-        for (let i = 0; i < 10 ; i++) {
+        for (let i = 0; i < limite ; i++) {
             //Realiza looping para armazenar os dados de cada linha
             const specifcRow = rows.eq(i)
             individualRanking.push({
@@ -45,7 +47,7 @@ async function getIndividualRanking() {
 };
 
 // O codigo a seguir é bastante similar ao anterior
-async function getRaceResults() {
+export async function getRaceResults() {
     const url = 'https://www.procyclingstats.com/races.php';
     let raceResults = [];
 
