@@ -38,7 +38,7 @@ async function getIndividualRanking() {
             });
         };
 
-        console.log(individualRanking)
+        return individualRanking;
     } catch (error) {
         console.error('Error retrieving the data:', error);
     };
@@ -67,7 +67,7 @@ async function getRaceResults() {
             });
         };
 
-        console.log(raceResults);
+        return raceResults;
     
 
     } catch(error){
@@ -76,8 +76,6 @@ async function getRaceResults() {
 
 };
 
-getIndividualRanking()
-getRaceResults()
 
 export default app;
 
