@@ -6,6 +6,8 @@ import routes from "./routes.js"
 //configurando express no projeto
 const app = express();
 app.use(express.json());
+
+//o app use routes tem que ser chamado após o app use json
 app.use(routes)
 
 

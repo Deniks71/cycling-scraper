@@ -13,6 +13,7 @@ router.get('/cycling/raceresults', async (req,res) => {
     }
     
 })
+
 router.get('/cycling/individualranking', async (req,res) => {
     try{
         let resultado = await getIndividualRanking(20);
