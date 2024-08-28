@@ -17,6 +17,7 @@ Para instalar, abra a pasta clonada na sua IDE favorita, e rode o comando NPM in
 O arquivo index.js é onde estão sendo chamadas as bibliotecas utilizadas no projeto além do setup inicial das mesmas. Também nesse mesmo arquivo, estão duas funções assincronas, uma que retorna os resultados das corridas World Tour do ano, e outra que retorna o ranking mundial individual dos atletas, a quantidade apresentada nesse ranking é passada por route parameter.
 EX: Se você quer mostrar os 15 primeiros do ranking deverar passar a seguinte url: 
 "/cycling/individualranking/15", as repostas da requisição será em forma de JSON.
+O range Maximo é 100.
 
 O arquivo routes.js, é onde estão configuradas as nossas rotas.
 
